@@ -12,7 +12,7 @@ body{
 
 .container-fluid{
     padding-top: 10px;
-    margin-right: 100px; 
+    margin-right: 10px; 
     display: flexbox;
     justify-content: space-between;
     text-align: right;
@@ -28,7 +28,7 @@ body{
     font-size: 20px;
     font-weight: bold;
     padding-top: 20px;
-    padding-left: 100px;
+    padding-left: 10px;
     display: grid;
     color:#8f59ab;
 }
