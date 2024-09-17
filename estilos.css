@@ -3,48 +3,137 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-.header{
-    height: 65px;
-    background-color: #eee5f3;  
+/* Header Styles */
+.header {
+    height: 80px;
+    background-color: #eee5f3;
     display: flex;
-    justify-content: space-between;   
-}
-
-.container-fluid{
-    padding-top: 10px;
-    margin-right: 10px; 
-    display: flexbox;
     justify-content: space-between;
-    text-align: right;
-}    
-
-.loguitos{
-    border-radius: 20px;
+    align-items: center;
+    padding: 0 25px;
+    position: relative;
+    z-index: 10; /* Asegura que el header esté encima del contenido */
 }
 
-.nombre{
+.nombre {
     text-align: left;
-    background-color: #eee5f3;  
     font-size: 20px;
     font-weight: bold;
-    padding-top: 20px;
-    padding-left: 10px;
-    display: grid;
-    color:#8f59ab;
+    color: #b18aff;
+    white-space: nowrap; 
+    font-family: 'Roboto', sans-serif;
 }
+
+/* Estilo para el menú hamburguesa */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001; /* Asegura que el botón de menú esté encima del menú */
+}
+
+.menu-icon {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background:  #756b77;
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background:  #756b77;
+    position: absolute;
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    top: 8px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex; /* Cambia esto para que el menú siga en 'flex' */
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    left: 0;
+    top: 80px; /* Ajusta esto según el tamaño del header */
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 300px;
+    border-radius: 5px;
+    max-height: 0; /* Inicialmente el menú tiene una altura de 0 */
+    overflow: hidden; /* Oculta los elementos fuera del contenedor */
+    opacity: 0; /* Inicialmente invisible */
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* Efecto de deslizamiento y opacidad */
+}
+
+.nav-menu.active {
+    max-height: 500px; /* Expande el menú al activarlo */
+    opacity: 1; /* Hace visible el menú */
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #b18aff;
+    font-size: 1rem;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: #886788;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.loguitos {
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+}
+
+.loguitos:hover {
+    transform: scale(1.1);
+}
+
 
 img:hover{
     transform: scale(1.1);
 }
 
 .cara:hover{
-    transform: scale(1.4);
+    transform: scale(1.2);
 }
 
 .cara{
     border-radius: 500px;
-    height: 200px;
+    border: 10px solid #fff;
+    height: 175px;
 }
+
 .uno{
     width: 100%;
     display: flex;
@@ -54,8 +143,6 @@ img:hover{
     background-color: #ccc3ca;
     color: white;
     background-image: url("imagenes/banner.jpg");
-    /* padding-top: 10%; */
-
 }
 
 .caja-central{
@@ -68,13 +155,15 @@ img:hover{
     height: 50%;
     
 }
+
 .caja-cara{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40%;
-    background-color: #8f59ab;
+    background-color: #bc94cf;
 }
+
 .caja-presentacion{
     display: flex;
     justify-content: center;
@@ -83,7 +172,35 @@ img:hover{
     background-color: #F2F2F2;
     color: #303030;
     padding: 10px;
-    
+}
+
+.sobre-mi{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.boton-container {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.boton {
+    background-color: #b18aff;
+    color: white;    
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    padding: 5px 12px;
+    font-size: 18px;
+    width: 200px; 
+    height: 60px;
+}
+
+.boton:hover {
+    background-color: #886788; 
 }
 
 .dos{
@@ -103,15 +220,11 @@ img:hover{
 .aptitudes{
     width: 50%;
 }
+
 .tech-list{
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
-}
-
-.tech{
-    height: 90px;
-    border-radius: 50px;
 }
 
 .cursos{
@@ -119,22 +232,120 @@ img:hover{
     padding-top: 20px;
 }
 
+.sobre-mi-seccion {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.sobre-mi-contenedor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.texto-sobre-mi {
+    flex: 1;
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+.imagen-sobre-mi img {
+    max-width: 300px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+.aptitudes-grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tech {
+    max-width: 80px;
+    border-radius: 10px;
+}
+
+.icono-ver-mas {
+    width: 30px;
+    margin-bottom: 5px;
+}
+
+.cursos-realizados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.curso-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%; /* Asegura que las tarjetas tengan la misma altura */
+    position: relative; /* Para alinear el botón correctamente */
+}
+
+.curso-item:hover {
+    transform: scale(1.05);
+}
+
+.curso-imagen {
+    height: 200px;
+    object-fit: cover;
+    padding: 5px 30px;
+}
+
+.curso-detalle {
+    padding: 5px 10px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.curso-detalle h3 {
+    font-size: 1.2em;
+    padding: 0px;
+    text-align: left;
+}
+
+.ver-mas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
 
 .tres{
-    background-color: #303030;
-    height: 600px;
+    height: 700px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    color: #F2F2F2;
+    background-color: #f9f9f9;
     
 }
-.proyectos{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
+
+.mis-proyectos-titulo{
+    padding-left: 80px
 }
+
 .card{
     text-align: center;
     width: 30%;
@@ -144,6 +355,12 @@ img:hover{
 }
 .card img{
     width: 100%;
+}
+
+.carousel-inner img {
+    max-width: 100%; /* Ajusta al 100% del ancho del contenedor */
+    max-height: 500px; /* Establece una altura máxima */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del contenedor */
 }
 
 .loguitos2{
@@ -160,19 +377,91 @@ img:hover{
     border-radius: 50px;
 }
 
+.logo-git{
+    height: 65px !important;
+    width: 65px;
+}
+
 footer{
-    background-color: #cb89e8;
+    background-color: #eee5f3;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    color: #ede4e4;
-    height: 180px;
+    color:#b18aff;
+    padding: 20px 0px;
 }
+
 .contacto{
     width: 30%;
     display: flex;
     justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer h2{
+    margin-bottom: 30px;
+}
+
+#contacto-formulario {
+    background-color: #cac6cc;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    font-size: 24px;
+    color: #b18aff;
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #b18aff; 
+    outline: none;
+}
+
+.contact-form button {
+    background-color: #b18aff; 
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #886788;
+}
+
+#responseMessage {
+    margin-top: 15px;
+    font-size: 16px;
+    color:  #886788;
 }
 
 @media (max-width: 1000px) {
@@ -217,8 +506,25 @@ footer{
     }
 }
 
-.maxi{
-    color: #322f2f;
-    text-align: right;
-    margin: 20px;
+/* Mostrar el botón hamburguesa en móviles y ocultar el menú */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #fff;
+        top: 50px; /* Ajusta esto si es necesario */
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+    }
 }
